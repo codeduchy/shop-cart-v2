@@ -24,7 +24,7 @@ app.use(errorHandler);
 //SERVER AND DB
 const port = process.env.PORT || 5000;
 try {
-  await connectDB();
+  connectDB();
   app.listen(port, () => console.log(`SERVER IS RUNNING ON PORT: ${port}`));
 } catch (error) {
   console.log(error);
