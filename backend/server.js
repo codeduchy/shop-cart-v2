@@ -6,14 +6,20 @@ import connectDB from './config/db.js';
 import productRouter from './routes/productRoutes.js';
 import { notFound } from './middleware/errorMiddleware.js';
 import { errorHandler } from './middleware/errorMiddleware.js';
+import cookieParser from 'cookie-parser';
 
 const app = express();
 
 //ENTRY MIDDLEWARE
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 //ROUTES
+import userRouter from './routes/userRoutes.js';
 app.get('/', (req, res) => res.send('API IS RUNNING :)'));
 app.use('/api/products', productRouter);
+app.use('/api/users', userRouter);
 
 //NOT FOUND
 app.use(notFound);
