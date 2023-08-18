@@ -19,7 +19,6 @@ const cartSlice = createSlice({
       } else {
         state.cartItems = [...state.cartItems, item];
       }
-      console.log(state);
       return updateCart(state);
     },
     removeFromCart: (state, action) => {
