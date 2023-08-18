@@ -1,3 +1,4 @@
+import path from 'path';
 import dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
@@ -18,14 +19,19 @@ app.use(cookieParser());
 import productRouter from './routes/productRoutes.js';
 import userRouter from './routes/userRoutes.js';
 import orderRouter from './routes/orderRoutes.js';
+import uploadRouter from './routes/uploadRoutes.js';
 app.get('/', (req, res) => res.send('API IS RUNNING :)'));
 app.use('/api/products', productRouter);
 app.use('/api/users', userRouter);
 app.use('/api/order', orderRouter);
-
+app.use('/api/upload', uploadRouter);
 app.get('/api/config/paypal', (req, res) =>
   res.send({ clientId: process.env.PAYPAL_CLIENT_ID })
 );
+
+const __dirname = path.resolve();
+console.log(__dirname);
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 //NOT FOUND
 app.use(notFound);
