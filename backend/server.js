@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 import connectDB from './config/db.js';
 import productRouter from './routes/productRoutes.js';
 import usersRouter from './routes/userRoutes.js';
+import orderRouter from './routes/orderRoutes.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
 // SETUP
@@ -22,6 +23,7 @@ app.get('/', (req, res) => {
 });
 app.use('/api/products', productRouter);
 app.use('/api/users', usersRouter);
+app.use('/api/orders', orderRouter);
 
 //NOT FOUND
 app.use(notFound);
