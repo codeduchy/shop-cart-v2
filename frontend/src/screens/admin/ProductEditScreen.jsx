@@ -40,7 +40,7 @@ const ProductEditScreen = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await updateProduct({
+      await updateProduct({
         productId,
         name,
         price,
