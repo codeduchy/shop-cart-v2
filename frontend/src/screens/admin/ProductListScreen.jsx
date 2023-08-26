@@ -19,7 +19,7 @@ const ProductListScreen = () => {
     isLoading,
     isError: error,
     refetch,
-  } = useGetProductsQuery(pageNumber);
+  } = useGetProductsQuery({ pageNumber });
 
   const [createProduct, { isLoading: loadingCreate }] =
     useCreateProductMutation();
@@ -65,7 +65,7 @@ const ProductListScreen = () => {
       {isLoading ? (
         <Loader />
       ) : error ? (
-        <Message variant="danger">{error.data.message}</Message>
+        <Message variant="danger">{error?.data?.message}</Message>
       ) : (
         <>
           <Table striped bordered hover responsive className="table-sm">
